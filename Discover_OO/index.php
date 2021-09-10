@@ -1,10 +1,11 @@
 <?php
 require_once 'vendor/autoload.php';
-if(!isset($_SESSION['logado'])) {
-    header("location: login.php");
-}
 
-$crud = new \App\Model\Crud();
+if(!isset($_SESSION['logado'])) {
+    header("location: Login/login.php");
+}else {
+    $crud = new \App\Model\CrudLivros();
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -19,7 +20,7 @@ $crud = new \App\Model\Crud();
     <?php
         foreach($crud->Read() as $row) { ?>
            <a href="book.php?book_id=<?php echo $row['book_id']?>">
-               <img src="imagens/<?php echo $row['capa']?>">
+               <img style="width: 200px; height: 300px" src="imagens/<?php echo $row['capa']?>">
                <p><?php echo $row['name_book']?></p>
            </a>
     <?php }
