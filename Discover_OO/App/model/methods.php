@@ -32,4 +32,16 @@ class Methods {
             }
         } 
     }
+    public function FindForId($id) {
+        $conn = Conexao::getConn();
+        $sql = "SELECT * FROM book_users WHERE book_id = ?";
+        $query = $conn->prepare($sql);
+        $query->bindValue(1, $id);
+        $query->execute();
+        if($query->rowCount() > 0) {
+            return  $query->fetchAll(\PDO::FETCH_ASSOC);
+        }else {
+            return [];
+        }
+    }
 }

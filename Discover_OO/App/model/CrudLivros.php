@@ -41,16 +41,15 @@ class CrudLivros {
         $query = $conn->prepare($sql);
         $query->execute();
         if($query->rowCount() > 0) {
-            $row = $query->fetchAll(\PDO::FETCH_ASSOC);
-            return $row;
+            return $query->fetchAll(\PDO::FETCH_ASSOC);
         }else {
-            return $row = [];
+            return [];
         }
     }
 
     public function Update(Livros $l) {
         $conn = Conexao::getConn();
-        $sql = "UPDATE discover SET name_book = ?, book = ?, description = ?";
+        $sql = "UPDATE book_users SET name_book = ?, book = ?, description = ?";
         $query = $conn->prepare($sql);
         $query->bindValue(1, $l->getNome());
         $query->bindValue(2, $l->getBook());
@@ -60,7 +59,7 @@ class CrudLivros {
 
     public function Delete($id){
         $conn = Conexao::getConn();
-        $sql = "DELETE FROM discover WHERE book_id = ?";
+        $sql = "DELETE FROM book_users WHERE book_id = ?";
         $query = $conn->prepare($sql);
         $query->bindValue(1, $id);
         $query->execute();

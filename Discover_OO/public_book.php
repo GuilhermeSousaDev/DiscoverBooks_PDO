@@ -2,7 +2,7 @@
 require_once 'vendor/autoload.php';
 
 if(!isset($_SESSION['logado'])) {
-    header("location: index.php");
+    header("location: Login/login.php");
 }else {
     if(isset($_POST['enviar'])) {
         $book = new \App\Model\Livros();
