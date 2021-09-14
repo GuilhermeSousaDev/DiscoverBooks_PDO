@@ -9,6 +9,7 @@ if(!isset($_SESSION['logado'])) {
         $book->setNome($_POST['name_book']);
         $book->setDescription($_POST['description']);
         $book->setBook($_POST['book']);  
+        $book->setType($_POST['type']);
         $book->setFileName($_FILES['capa']['name']);
         $book->setFileTmp($_FILES['capa']['tmp_name']);
         $book->setFileExtension(pathinfo($_FILES['capa']['name'],PATHINFO_EXTENSION));
@@ -35,6 +36,13 @@ if(!isset($_SESSION['logado'])) {
     <form action="" method="POST" enctype="multipart/form-data">
         <input type="text" name="name_book">
         <input type="text" name="description">
+        <select name="type">
+            <option value="Aventura">Aventura</option>
+            <option value="Romance">Romance</option>
+            <option value="Terror">Terror</option>
+            <option value="Drama">Drama</option>
+
+        </select>
         <textarea name="book"></textarea>
         <input type="file" name="capa">
         <button name="enviar">Enviar</button>

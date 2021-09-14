@@ -23,9 +23,11 @@ require_once 'vendor/autoload.php';
                 <img style="width: 200px; height: 300px" src="imagens/<?php echo $row['capa']?>">
                 <h1><?php echo $row['name_book']?></h1>
                 <p><?php echo $row['description']?></p>
-                <p>Escrito Por: <?php echo $athor?></p>
+                <p>Autor: <?php echo !empty($row['autor'])? $row['autor'] : 'Anônimo'?></p>
+                <small>Gênero: <?php echo $row['type']?></small>
             </div>
     <?php }
     ?>
+        
 </body>
 </html>

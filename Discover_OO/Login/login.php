@@ -46,7 +46,7 @@ if(isset($_POST['criar'])) {
                 res.innerHTML = xhr.responseText
             }
             const email = document.getElementById('email').value
-            xhr.open("POST","App/model/ajax.php")
+            xhr.open("POST","../App/model/ajax.php")
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             xhr.send("email=" + email)
         }

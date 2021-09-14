@@ -5,6 +5,7 @@ class Livros {
     public $nome;
     public $book;
     public $description;
+    public $type;
     public $fileName;
     public $fileTmp;
     public $fileExtension;
@@ -31,6 +32,13 @@ class Livros {
 
     public function getDescription() {
         return $this->description;
+    }
+
+    public function setType($type) {
+        $this->type = $type;
+    }
+    public function getType() {
+        return $this->type;
     }
 
     public function setFileName($fileName) {

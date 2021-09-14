@@ -18,13 +18,15 @@ class CrudLivros {
             $pasta = "imagens/$fileName";
             if(move_uploaded_file($tmp_name,$pasta)) {
                 $conn = Conexao::getConn();
-                $sql = "INSERT INTO book_users(user_id,name_book,book,description,capa) VALUES(?,?,?,?,?)";
+                $sql = "INSERT INTO book_users(user_id,name_book,book,description,capa,autor,type) VALUES(?,?,?,?,?,?,?)";
                 $query = $conn->prepare($sql);
                 $query->bindValue(1, $_SESSION['user_id']);
                 $query->bindValue(2, $l->getNome());
                 $query->bindValue(3, $l->getBook());
                 $query->bindValue(4, $l->getDescription());
                 $query->bindValue(5, $fileName);
+                $query->bindValue(6, $_SESSION['user']);
+                $query->bindValue(7, $l->getType());
                 $query->execute();
                 if($query->rowCount()) {
                     echo "Cadastrado com Sucesso";
