@@ -1,0 +1,59 @@
+body {
+    scroll-behavior: smooth;
+}
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 30px;
+}
+.recomended {
+    display: flex;
+    overflow: hidden;
+}
+.recomended a {
+    margin-left: 10px;
+}
+.adventure {
+    display: flex;
+    overflow: hidden;
+}
+.adventure a {
+    margin-left: 10px;
+}
+.next {
+    position: absolute;
+    top: 290px;
+    right: 10px;
+    background: black;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+}
+.prev {
+    position: absolute;
+    top: 290px;
+    left: 10px;
+    background: black;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+}
+.nextA {
+    position: absolute;
+    top: 740px;
+    right: 10px;
+    background: black;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+}
+.prevA {
+    position: absolute;
+    top: 740px;
+    left: 10px;
+    background: black;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+}

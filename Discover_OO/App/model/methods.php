@@ -33,6 +33,9 @@ class Methods {
             }
         } 
     }
+    public function Cadastrar(User $u) {
+        
+    }
     public function FindForId($book_id) {
         $conn = Conexao::getConn();
         $sql = "SELECT * FROM book_users WHERE book_id = ?";
@@ -67,7 +70,7 @@ class Methods {
         $query->bindValue(1, $type);
         $query->execute();
         if($query->rowCount() > 0) {
-            return $query->fetch(\PDO::FETCH_ASSOC);
+            return $query->fetchAll(\PDO::FETCH_ASSOC);
         }else {
             return [];
         }
@@ -80,7 +83,7 @@ class Methods {
         $query->bindValue(1, $type);
         $query->execute();
         if($query->rowCount() > 0) {
-            return $query->fetch(\PDO::FETCH_ASSOC);
+            return $query->fetchAll(\PDO::FETCH_ASSOC);
         }else {
             return [];
         }
@@ -93,7 +96,7 @@ class Methods {
         $query->bindValue(1, $type);
         $query->execute();
         if($query->rowCount() > 0) {
-            return $query->fetch(\PDO::FETCH_ASSOC);
+            return $query->fetchAll(\PDO::FETCH_ASSOC);
         }else {
             return [];
         }

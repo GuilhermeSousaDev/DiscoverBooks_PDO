@@ -24,7 +24,7 @@ require_once 'vendor/autoload.php';
                 <h1><?php echo $row['name_book']?></h1>
                 <p><?php echo $row['description']?></p>
                 <p>Autor: <?php echo !empty($row['autor'])? $row['autor'] : 'Anônimo'?></p>
-                <small>Gênero: <?php echo $row['type']?></small>
+                <small>Gênero: <?php echo empty($row['type'])? 'Sem Gênero' : $row['type']?></small>
             </div>
     <?php }
     ?>
