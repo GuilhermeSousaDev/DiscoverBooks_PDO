@@ -8,7 +8,7 @@ if(isset($_POST['enviar'])) {
     $user->setSenha(md5($_POST['senha']));
 
     try {
-        $Test = new \App\Model\Methods();
+        $Test = new \App\Model\Authenticate();
         $Test->Login($user);
     } catch (\Exception $e) {
         $erros = $e->getMessage();

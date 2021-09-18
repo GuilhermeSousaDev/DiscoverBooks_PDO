@@ -6,37 +6,38 @@ use Exception;
 class CrudLivros {
     public function Create(Livros $l) {
         $fileSize = $l->getFileSize();
+        $fileName = $l->getFileName();
         $extension = $l->getFileExtension();
         $tmp_name = $l->getFileTmp();
         $suport = array('png','jpg','jpeg');
-        if($fileSize > 2097152 || !in_array($extension,$suport)) {
-            throw new Exception("Arquivo não suportado");
-            $message = 'File too large. File must be less than 2 megabytes.'; 
-            echo '<script type="text/javascript">alert("'.$message.'");</script>'; 
-        }else {
-            $fileName = $l->getFileName();
-            $pasta = "imagens/$fileName";
-            if(move_uploaded_file($tmp_name,$pasta)) {
-                $conn = Conexao::getConn();
-                $sql = "INSERT INTO book_users(user_id,name_book,book,description,capa,autor,type) VALUES(?,?,?,?,?,?,?)";
-                $query = $conn->prepare($sql);
-                $query->bindValue(1, $_SESSION['user_id']);
-                $query->bindValue(2, $l->getNome());
-                $query->bindValue(3, $l->getBook());
-                $query->bindValue(4, $l->getDescription());
-                $query->bindValue(5, $fileName);
-                $query->bindValue(6, $_SESSION['user']);
-                $query->bindValue(7, $l->getType());
-                $query->execute();
-                if($query->rowCount()) {
-                    echo "Cadastrado com Sucesso";
-                }else {
-                    throw new Exception("Erro ao Cadastrar");
+        if(!empty($fileSize) || !empty($extension) || !empty($fileName) || !empty($tmp_name)) {
+            if($fileSize > 2097152 || !in_array($extension,$suport)) {
+                throw new Exception("File too large. File must be less than 2 megabytes or File not suport for system");
+            }else {
+                $pasta = "imagens/$fileName";
+                if(move_uploaded_file($tmp_name,$pasta)) {
+                    $conn = Conexao::getConn();
+                    $sql = "INSERT INTO book_users(user_id,name_book,book,description,capa,autor,type) VALUES(?,?,?,?,?,?,?)";
+                    $query = $conn->prepare($sql);
+                    $query->bindValue(1, $_SESSION['user_id']);
+                    $query->bindValue(2, $l->getNome());
+                    $query->bindValue(3, $l->getBook());
+                    $query->bindValue(4, $l->getDescription());
+                    $query->bindValue(5, $fileName);
+                    $query->bindValue(6, $_SESSION['user']);
+                    $query->bindValue(7, $l->getType());
+                    $query->execute();
+                    if($query->rowCount()) {
+                        echo "Cadastrado com Sucesso";
+                    }else {
+                        throw new Exception("Erro ao Cadastrar");
+                    }
                 }
             }
+        }else {
+            throw new Exception("Preencha todos os Campos");
         }
     }
-
     public function Read() {
         $conn = Conexao::getConn();
         $sql = "SELECT * FROM book_users ORDER BY book_id DESC";

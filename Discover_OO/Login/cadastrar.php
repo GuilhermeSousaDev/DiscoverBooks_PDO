@@ -1,6 +1,18 @@
 <?php
 require_once '../vendor/autoload.php';
-    
+   if(isset($_POST['enviar'])) {
+       try {
+        $User = new \App\Model\User();
+        $User->setNome($_POST['username']);
+        $User->setEmail($_POST['email']);
+        $User->setSenha(md5($_POST['senha']));
+        
+        $cadastro = new \App\Model\Authenticate();
+        $cadastro->Cadastrar($User);
+       } catch (\Exception $e) {
+           $erros = $e->getMessage();
+       }
+   }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

@@ -14,6 +14,18 @@ nav {
 .recomended a {
     margin-left: 10px;
 }
+.adventure a {
+    margin-left: 10px;
+}
+.terror a {
+    margin-left: 10px;
+}
+.romance a {
+    margin-left: 10px;
+}
+.drama a {
+    margin-left: 10px;
+}
 .adventure {
     display: flex;
     overflow: hidden;
@@ -39,7 +51,7 @@ nav {
     padding: 5px;
     cursor: pointer;
 }
-.nextA {
+.nextB {
     position: absolute;
     top: 740px;
     right: 10px;
@@ -48,9 +60,63 @@ nav {
     padding: 5px;
     cursor: pointer;
 }
-.prevA {
+.prevB {
     position: absolute;
     top: 740px;
+    left: 10px;
+    background: black;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+}
+.nextC {
+    position: absolute;
+    top: 75rem;
+    right: 10px;
+    background: black;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+}
+.prevC {
+    position: absolute;
+    top: 75rem;
+    left: 10px;
+    background: black;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+}
+.nextD {
+    position: absolute;
+    top: 103rem;
+    right: 10px;
+    background: black;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+}
+.prevD {
+    position: absolute;
+    top: 103rem;
+    left: 10px;
+    background: black;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+}
+.nextE {
+    position: absolute;
+    top: 123rem;
+    right: 10px;
+    background: black;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+}
+.prevE {
+    position: absolute;
+    top: 123rem;
     left: 10px;
     background: black;
     color: white;

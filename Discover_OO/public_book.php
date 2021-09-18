@@ -17,7 +17,7 @@ if(!isset($_SESSION['logado'])) {
         try {
             $newBook = new \App\Model\CrudLivros();
             $newBook->Create($book);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $erros = $e->getMessage();
         }
     }
@@ -32,7 +32,7 @@ if(!isset($_SESSION['logado'])) {
     <title>Publicar Livro</title>
 </head>
 <body>  
-    <?php echo !empty($erros)? $erros : ''?>
+    <p><?php echo !empty($erros)? $erros : ''?></p>
     <form action="" method="POST" enctype="multipart/form-data">
         <input type="text" name="name_book">
         <input type="text" name="description">
