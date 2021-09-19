@@ -11,6 +11,18 @@ nav {
     display: flex;
     overflow: hidden;
 }
+.terror {
+    display: flex;
+}
+.adventure {
+    display: flex;
+}
+.romance {
+    display: flex;
+}
+.drama {
+    display: flex;
+}
 .recomended a {
     margin-left: 10px;
 }

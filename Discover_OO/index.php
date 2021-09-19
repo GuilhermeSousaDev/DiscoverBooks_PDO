@@ -28,6 +28,9 @@ if(!isset($_SESSION['logado'])) {
         <div>
             <a href="public_book.php?autor=<?php echo isset($_SESSION['user'])? $_SESSION['user'] : 'Anônimo'?>">Publicar um livro</a>
         </div>
+        <form action="search.php">
+            <button>Pesquisar</button>
+        </form>
     </nav>
     <br>
     <br>

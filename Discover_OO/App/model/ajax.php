@@ -4,23 +4,23 @@ require 'conexao.php';
 
 class Ajax {
     public static function Response() {   
-        if(isset($_POST)) {
-            foreach($_POST as $post) {
-                if(!filter_var($post, FILTER_VALIDATE_EMAIL)) {
-                    echo "Email Inválido";
-                }else {
-                    $sql = "SELECT email FROM usuario WHERE email = ?";
-                    $query = Conexao::getConn()->prepare($sql);
-                    $query->bindValue(1, $post);
-                    $query->execute();
-                    if($query->rowCount() > 0) {
-                        echo "Email já existente";
-                    }else {
-                        echo "(V) Email Válido";
-                    }   
+        if(isset($_GET['q'])) {
+            $sql = "SELECT * FROM book_users WHERE name_book LIKE '%$_GET[q]%'";
+            $query = Conexao::getConn()->prepare($sql);
+            $query->execute();
+            if($query->rowCount() > 0) {
+                foreach($query->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+                    echo "<div>";
+                        echo "<h1>$row[name_book]</h1>";
+                        echo "<img style='width: 200px; height: 200px;' src=imagens/$row[capa]>";
+                        echo "<p>$row[description]</p>";
+                        echo "<a href=book.php?book_id=$row[book_id]><button>Ler</button><a>";
+                    echo "</div>";
                 }
-            }
-        }        
-    }
+            }else {
+                "<p>Sem resultados</p>";
+            }   
+        }
+    }        
 }
 Ajax::Response();
