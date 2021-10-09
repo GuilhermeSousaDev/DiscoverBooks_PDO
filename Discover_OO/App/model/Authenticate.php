@@ -35,6 +35,28 @@ class Authenticate {
         } 
     }
     public function Cadastrar(User $u) {
-        
+        if(empty($u->getNome()) || empty($u->getEmail()) || empty($u->getSenha())) {
+            throw new Exception("Preencha todos os Campos");
+        }else {
+            $sql = "SELECT nome FROM usuarios WHERE nome = ?";
+            $query = Conexao::getConn()->prepare($sql);
+            $query->bindValue(1, $u->getNome());
+            $query->execute();
+            if($query->rowCount() == 0) {
+                $sql = "INSERT INTO usuarios(nome,email,senha) VALUES(?,?,?)";
+                $query = Conexao::getConn()->prepare($sql);
+                $query->bindValue(1, $u->getNome());
+                $query->bindValue(2, $u->getEmail());
+                $query->bindValue(3, $u->getSenha());
+                $query->execute();
+                if($query->rowCount() > 0) {
+                    header('location: login.php');
+                }else {
+                    throw new Exception("Erro ao cadastrar usuário");
+                }
+            }else {
+                throw new Exception("Usuário existente");
+            }
+        }
     }
 }

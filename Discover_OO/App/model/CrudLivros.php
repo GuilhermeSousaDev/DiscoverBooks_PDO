@@ -11,7 +11,7 @@ class CrudLivros {
         $tmp_name = $l->getFileTmp();
         $suport = array('png','jpg','jpeg');
         if(!empty($fileSize) || !empty($extension) || !empty($fileName) || !empty($tmp_name)) {
-            if($fileSize > 2097152 || !in_array($extension,$suport)) {
+            if($fileSize > 2097152 || !in_array($extension, $suport)) {
                 throw new Exception("File too large. File must be less than 2 megabytes or File not suport for system");
             }else {
                 $pasta = "imagens/$fileName";
@@ -27,7 +27,7 @@ class CrudLivros {
                     $query->bindValue(6, $_SESSION['user']);
                     $query->bindValue(7, $l->getType());
                     $query->execute();
-                    if($query->rowCount()) {
+                    if($query->rowCount() > 0) {
                         echo "Cadastrado com Sucesso";
                     }else {
                         throw new Exception("Erro ao Cadastrar");
@@ -40,7 +40,7 @@ class CrudLivros {
     }
     public function Read() {
         $conn = Conexao::getConn();
-        $sql = "SELECT * FROM book_users ORDER BY book_id DESC";
+        $sql = "SELECT * FROM book_users ORDER BY RAND() LIMIT 20";
         $query = $conn->prepare($sql);
         $query->execute();
         if($query->rowCount() > 0) {

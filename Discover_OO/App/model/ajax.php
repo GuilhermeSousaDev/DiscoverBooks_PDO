@@ -10,15 +10,15 @@ class Ajax {
             $query->execute();
             if($query->rowCount() > 0) {
                 foreach($query->fetchAll(\PDO::FETCH_ASSOC) as $row) {
-                    echo "<div>";
-                        echo "<h1>$row[name_book]</h1>";
-                        echo "<img style='width: 200px; height: 200px;' src=imagens/$row[capa]>";
-                        echo "<p>$row[description]</p>";
-                        echo "<a href=book.php?book_id=$row[book_id]><button>Ler</button><a>";
-                    echo "</div>";
+                        echo "<div>";
+                            echo "<h1>$row[name_book]</h1>";
+                            echo "<img style='width: 200px; height: 200px;' src=imagens/$row[capa]>";
+                            echo "<p>$row[description]</p>";
+                            echo "<a href=book.php?book_id=$row[book_id]><button>Ler</button><a>";
+                        echo "</div>";
                 }
             }else {
-                "<p>Sem resultados</p>";
+                echo "<p>Sem resultados</p>";
             }   
         }
     }        

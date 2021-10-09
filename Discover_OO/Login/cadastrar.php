@@ -13,6 +13,9 @@ require_once '../vendor/autoload.php';
            $erros = $e->getMessage();
        }
    }
+   if(isset($_POST['enviar'])) {
+       header('location: login.php');
+   }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
